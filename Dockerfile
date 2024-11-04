@@ -10,7 +10,7 @@ RUN --mount=type=secret,id=gh_token --mount=type=bind,target=/docker_context\
     scif install /tmp/sciduct.scif
 
 RUN --mount=type=secret,id=gh_token --mount=type=bind,target=/docker_context\
-    scif install /docker_context/apps.scif
+    scif install /docker_context/taxobench.scif
 
 RUN rm -rf /run/secrets || true
 
