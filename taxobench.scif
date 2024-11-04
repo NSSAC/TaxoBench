@@ -1,20 +1,16 @@
-%appinstall app001
+%appinstall opal
 cp /docker_context/environment.yml .
 micromamba install --yes --name base --file environment.yml
-cd bin
-cp /docker_context/src/app_script001.py .
-chmod +x app_script001.py
+opal.py -h
 
-%apphelp app001
-a little documentation for this app, if wanted
+%apphelp opal
+OPAL: Open-community Profiling Assessment tooL
+https://github.com/CAMI-challenge/OPAL
 
-%apprun app001
-CMD="app_script001.py $@"
+%apprun opal
+CMD="opal.py $@"
 echo "Running $CMD" &&
 $CMD
 
-%apprun app001_sciduct
-mkdir -p $SCIF_APPDATA
-NAME="$(jq -r .input.name /job/job.json)"
-AGE="$(jq -r .input.age /job/job.json)"
-scif run app001 --name $NAME --age $AGE --outdir $SCIF_APPDATA
+%apprun opal_sciduct
+scif run opal
